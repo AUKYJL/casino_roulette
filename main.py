@@ -1,7 +1,8 @@
 from game import *
 import json
 
-
+def plus(a,b):
+    return a+b
 class User():
     def __init__(self):
         self.get_user_name()
