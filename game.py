@@ -2,6 +2,8 @@ import json
 import time, random, os
 from colorama import init
 from colorama import Fore, Back, Style
+from game_controller import GameController
+
 init()
 
 
@@ -21,7 +23,7 @@ class Roulette:
     def draw_cursor(self):
         indent = '\t       '
         print(Fore.RED + f'{indent} ^')
-        print(f'{indent} |'+Style.RESET_ALL)
+        print(f'{indent} |' + Style.RESET_ALL)
 
     def draw_machine(self, slots, symbol, bet):
         print(f'Ваш символ : {symbol}, ваша ставка : {bet}$')
@@ -67,7 +69,7 @@ class Roulette:
             self.set_symbol()
 
     def congrats(self):
-        win_balance = int(self.bet) * 5
+        win_balance = int(self.bet) * GameController.games_win_balance_multiply[0]
         print(f'Хорош, бро\nТекущий баланс увеличен на {win_balance}$!')
         self.balance += win_balance
 
@@ -122,3 +124,4 @@ class Roulette:
         else:
             print('Введите еще раз')
             self.restart()
+
