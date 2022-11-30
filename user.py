@@ -1,6 +1,5 @@
 import json
-
-import games.controller_game as cg
+import controller_game as cg
 
 
 class User:

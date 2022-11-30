@@ -1,7 +1,7 @@
 import json
 import time, random, os
 from colorama import Fore, Back, Style
-from games import controller_game as cg
+import controller_game as cg
 
 class RandomRoulette:
     SYMBOLS = ('☺', '♥', '♦', '♣', '☼', '♀', '♂')
