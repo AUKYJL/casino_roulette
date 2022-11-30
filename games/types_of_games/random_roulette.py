@@ -1,13 +1,9 @@
 import json
 import time, random, os
-from colorama import init
 from colorama import Fore, Back, Style
-from game_controller import GameController
+from games import controller_game as cg
 
-init()
-
-
-class Roulette:
+class RandomRoulette:
     SYMBOLS = ('☺', '♥', '♦', '♣', '☼', '♀', '♂')
 
     def __init__(self, balance, player):
@@ -69,9 +65,9 @@ class Roulette:
             self.set_symbol()
 
     def congrats(self):
-        win_balance = int(self.bet) * GameController.games_win_balance_multiply[0]
+        win_balance = int(self.bet) * cg.GameController.games_win_balance_multiply[0]
         print(f'Хорош, бро\nТекущий баланс увеличен на {win_balance}$!')
-        self.balance += win_balance
+        self.balance = self.balance - self.bet + win_balance
 
     def lose(self):
         print(f'В следующий раз повезет!\nБаланс уменьшен на {self.bet}$')
@@ -124,4 +120,3 @@ class Roulette:
         else:
             print('Введите еще раз')
             self.restart()
-

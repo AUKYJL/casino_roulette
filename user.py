@@ -1,6 +1,6 @@
 import json
 
-from game_controller import GameController
+import games.controller_game as cg
 
 
 class User:
@@ -76,8 +76,8 @@ class User:
             print(f'Вы начинаете игру с начальным балансом {self.balance}$')
         else:
             self.continue_or_restart_game()
-        num_of_game = GameController.choice_mini_game()
-        GameController.start_selected_game(num_of_game, self.balance, self.user_name)
+        num_of_game = cg.GameController.choice_mini_game()
+        cg.GameController.start_selected_game(num_of_game, self.balance, self.user_name)
 
     def continue_or_restart_game(self):
         print(f'Продолжить игру с прошлым балансом ({self.balance}$) или начать по новой с 100$. Введите 1 или 2')

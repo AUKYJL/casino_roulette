@@ -1,12 +1,14 @@
-from game import Roulette
+import game
+import os
+
 
 class GameController:
     # множитель записывается в порядке игр
-    games_win_balance_multiply = [5]
+    games_win_balance_multiply = [10]
     # название:описание игры
-    games = {0:
+    games = {1:
                  {'name': "Классическая рулетка",
-                  'class': Roulette,
+                  'class': game.RandomRoulette,
                   'desc': f'Вам предстоит выбрать символ и крутануть рулетку, если'
                           f' выпадает ваш символ, то вы получаете x{games_win_balance_multiply[0]}'
                   }
@@ -37,13 +39,14 @@ class GameController:
     @classmethod
     def show_list_of_games(cls):
         """Показывает список доступных игр"""
-        for i in range(len(cls.games)):
+        for i in range(1, len(cls.games) + 1):
             name = cls.games[i]["name"]
             desc = cls.games[i]["desc"]
-            print(f'{i + 1}) {name} : {desc}')
+            print(f'{i}) {name} : {desc}')
 
     @classmethod
     def start_selected_game(cls, num_of_game: int, user_balance: int, user_name: str):
         """Из списка games получает класс игры и запускается"""
+        os.system('cls' if os.name == 'nt' else 'clear')
         game_name = cls.games[num_of_game]['class']
         game_name(user_balance, user_name).start_game()
